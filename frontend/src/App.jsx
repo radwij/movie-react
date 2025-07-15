@@ -1,16 +1,14 @@
 import { Outlet } from  "react-router-dom"
 import Navbar from "./components/Navbar"
-import Home from "./pages/Home"
-import Discussion from "./pages/Discussion"
 
 function App() {
   return (
-    <>
-    <Navbar />
-    <main>
-      <Outlet />
-    </main>
-    </>
+    <div className="w-full h-fit">
+      <Navbar />
+      <main className="w-full">
+        <Outlet />
+      </main>
+    </div>
   )
 }
 
