@@ -1,28 +1,35 @@
 import { useEffect, useState } from "react"
-import { getPopularMovies } from "../services/movieService";
+import { getPopularMovies, getTrendingMovies } from "../services/movieService";
 import MovieCard from "../components/MovieCard";
 import { Link } from "react-router-dom";
+import MovieCarousel from "../components/MovieCarousel";
 
 function Home() {
   // setting up state
-  const [movies, setMovies] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
+  const [trendingMovies, setTrendingMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   // on mount, the component will do this
   useEffect(() => {
     // define the function to run
-    const loadMovies = async () => {
+    const loadAllMovies = async () => {
       try {
         // setting default state before fetching
         setLoading(true);
         setError(null);
 
         // fetching the data
-        const movieData = await getPopularMovies();
+        const [popular, trending] = await Promise.all([
+          getPopularMovies(),
+          getTrendingMovies()
+        ]);
+        // const movieData = await getPopularMovies();
         
-        // setting the fetched movies to state
-        setMovies(movieData);
+        // setting the fetched popularMovies to state
+        setPopularMovies(popular);
+        setTrendingMovies(trending);
       } catch (err) {
         // catching the error thrown from service
         setError(err.message);
@@ -32,7 +39,7 @@ function Home() {
     };
 
     // call the function
-    loadMovies();
+    loadAllMovies();
 
     // no dependency (default: onMount)
   }, [])
@@ -48,12 +55,15 @@ function Home() {
   }
 
   return (
-    <div className="flex flex-col justify-between max-w-7xl px-8 py-5 mx-auto">
+    <div className="flex flex-col justify-between max-w-7xl px-8 py-5 mx-auto gap-6">
+      <div className="w-full">
+        <MovieCarousel movies={trendingMovies}/>
+      </div>
       <div className="flex flex-col gap-y-4">
         <h1 className="text-black font-semibold text-2xl">Popular Movies</h1>
         <div className="overflow-x-auto pb-4">
           <div className="flex flex-nowrap space-x-4">
-            {movies.map(
+            {popularMovies.map(
               movie =>(
               <Link to={`movie/${movie.id}`} key={movie.id}>
                 <MovieCard movie={movie}/>
