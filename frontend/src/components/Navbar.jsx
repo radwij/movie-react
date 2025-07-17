@@ -29,13 +29,13 @@ function Navbar() {
           <input
             type="text"
             placeholder="Look up something..."
-            className="search-input w-full border-2 border-gray-200 px-5 py-2 rounded-3xl focus:outline-0 focus:border-blue-500 focus:border-3"
+            className="search-input w-full border-2 border-gray-200 h-10 px-5 py-2 rounded-3xl focus:outline-0 focus:border-blue-500 focus:border-3"
           />
-          <button type="submit" className="py-2 px-4 bg-blue-500 rounded-lg not-last-of-type:hover:bg-blue-700 transition-colors duration-300">
-            <i className="fa-solid fa-magnifying-glass text-white"></i>
+          <button type="submit" className="flex items-center justify-center h-10 px-2 text-base font-semibold text-white bg-blue-500 rounded-lg w-fit whitespace-nowrap hover:bg-blue-600 transition-colors duration-300">
+            <span className="material-symbols-outlined text-white">search</span> 
           </button>
         </form>
-        <Link to="" className="text-base font-semibold text-white px-5 py-2 bg-blue-500 rounded-lg w-fit whitespace-nowrap hover:bg-blue-600 transition-colors duration-300">Join Us</Link>
+        <Link to="" className="flex items-center justify-center h-10 px-5 text-base font-semibold text-white bg-blue-500 rounded-lg w-fit whitespace-nowrap hover:bg-blue-600 transition-colors duration-300">Join Us</Link>
       </div>
     </nav>
   )
