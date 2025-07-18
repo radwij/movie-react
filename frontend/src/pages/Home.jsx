@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getPopularMovies, getTrendingMovies } from "../services/movieService";
+import { getPopularMovies, getTopRatedMovies, getTrendingMovies, getUpcomingMovies } from "../services/movieService";
 import MovieCard from "../components/MovieCard";
 import { Link } from "react-router-dom";
 import MovieCarousel from "../components/MovieCarousel";
@@ -8,6 +8,8 @@ function Home() {
   // setting up state
   const [popularMovies, setPopularMovies] = useState([]);
   const [trendingMovies, setTrendingMovies] = useState([]);
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -21,15 +23,19 @@ function Home() {
         setError(null);
 
         // fetching the data
-        const [popular, trending] = await Promise.all([
+        const [popular, trending, topRated, upcoming] = await Promise.all([
           getPopularMovies(),
-          getTrendingMovies()
+          getTrendingMovies(),
+          getTopRatedMovies(),
+          getUpcomingMovies()
         ]);
         // const movieData = await getPopularMovies();
         
         // setting the fetched popularMovies to state
         setPopularMovies(popular);
         setTrendingMovies(trending);
+        setTopRatedMovies(topRated);
+        setUpcomingMovies(upcoming);
       } catch (err) {
         // catching the error thrown from service
         setError(err.message);
@@ -55,8 +61,8 @@ function Home() {
   }
 
   return (
-    <div className="flex flex-col justify-between max-w-7xl px-8 py-5 mx-auto gap-6">
-      <div className="w-full">
+    <div className="flex flex-col justify-between max-w-7xl px-8 py-5 mx-auto gap-0">
+      <div className="w-full mb-6">
         <MovieCarousel movies={trendingMovies}/>
       </div>
       <div className="flex flex-col gap-y-4">
@@ -73,10 +79,10 @@ function Home() {
         </div>
       </div>
       <div className="flex flex-col gap-y-4">
-        <h1 className="text-black font-semibold text-2xl">Popular Movies</h1>
+        <h1 className="text-black font-semibold text-2xl">Top Rated Movies</h1>
         <div className="overflow-x-auto pb-4">
           <div className="flex flex-nowrap space-x-4">
-            {popularMovies.map(
+            {topRatedMovies.map(
               movie =>(
               <Link to={`movie/${movie.id}`} key={movie.id}>
                 <MovieCard movie={movie}/>
@@ -86,10 +92,10 @@ function Home() {
         </div>
       </div>
       <div className="flex flex-col gap-y-4">
-        <h1 className="text-black font-semibold text-2xl">Popular Movies</h1>
+        <h1 className="text-black font-semibold text-2xl">Upcoming Movies</h1>
         <div className="overflow-x-auto pb-4">
           <div className="flex flex-nowrap space-x-4">
-            {popularMovies.map(
+            {upcomingMovies.map(
               movie =>(
               <Link to={`movie/${movie.id}`} key={movie.id}>
                 <MovieCard movie={movie}/>

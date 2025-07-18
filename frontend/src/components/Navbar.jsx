@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import companyLogo from "../assets/react.svg"
+import companyLogo from "../assets/logo.svg"
 import { useEffect, useState } from "react"
 
 function Navbar() {

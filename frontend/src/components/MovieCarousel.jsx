@@ -64,8 +64,6 @@ function MovieCarousel({movies}) {
                         <p className="text-white text-6xl font-bold overflow-hidden [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">{movie.title}</p>
                         <div className="flex gap-2 items-center text-gray-300 pl-1">
                           <p>{movie.release_date.split('-')[0]}</p>
-                          <p>|</p>
-                          <p>{movie.runtime} minutes</p>
                         </div>
                         <div className="flex whitespace-nowrap space-x-3 mt-2">
                           <button className="flex items-center justify-center h-10 px-5 text-base font-semibold text-white bg-blue-500 rounded-lg w-fit whitespace-nowrap hover:bg-blue-600 transition-colors duration-300">View Detail</button>
