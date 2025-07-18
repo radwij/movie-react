@@ -99,7 +99,7 @@ function MovieDetail() {
             )}
             {activeTab === 'cast' && (
               <div className="overflow-x-auto w-full pb-4">
-                <div className="flex flex-nowrap gap-3">
+                <div className="flex flex-nowrap gap-3 h-fit">
                   {movieCredit.cast.map(
                     cast => (
                       <CastCard person={cast} movie={movie} key={cast.cast_id}/>
