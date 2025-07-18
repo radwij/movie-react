@@ -52,3 +52,16 @@ export const getSimilarMovies = async (movieId) => {
   const data = await response.json();
   return data.results;
 }
+
+export const getTopRatedMovies = async () => {
+  const url = `${API_URL}/movie/top_rated?language=en-US&page=1&api_key=${API_KEY}`
+
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data.results;
+}
