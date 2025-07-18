@@ -39,3 +39,16 @@ export const getTrendingMovies = async () => {
   const data = await response.json();
   return data.results;
 }
+
+export const getSimilarMovies = async (movieId) => {
+  const url = `${API_URL}/movie/${movieId}/similar?api_key=${API_KEY}`
+
+  const response = await fetch(url);
+
+  if (!response) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data.results;
+}
