@@ -78,3 +78,16 @@ export const getUpcomingMovies = async () => {
   const data = await response.json();
   return data.results;
 }
+
+export const getMovieCredit = async (movieId) => {
+  const url = `${API_URL}/movie/${movieId}/credits?language=en-US&api_key=${API_KEY}`;
+
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`HTTP Error! status: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data;
+}
