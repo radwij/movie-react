@@ -3,6 +3,7 @@ import App from "./App";
 import Home from "./pages/Home";
 import Discussion from "./pages/Discussion";
 import MovieDetail from "./pages/MovieDetail";
+import UnderDevelopment from "./pages/UnderDevelopment";
 
 
 const router = createBrowserRouter([
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
       },
       {
         path: "discussion",
-        element: <Discussion />
+        element: <UnderDevelopment />
       },
       {
         path: "movie/:movieId",
