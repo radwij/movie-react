@@ -65,7 +65,7 @@ function Home() {
       <div className="w-full mb-6">
         <MovieCarousel movies={trendingMovies}/>
       </div>
-      <div className="flex flex-col gap-y-4">
+      <div className="flex flex-col gap-y-3">
         <h1 className="text-black font-semibold text-2xl">Popular Movies</h1>
         <div className="overflow-x-auto pb-4">
           <div className="flex flex-nowrap space-x-4">
@@ -78,7 +78,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-y-4">
+      <div className="flex flex-col gap-y-3">
         <h1 className="text-black font-semibold text-2xl">Top Rated Movies</h1>
         <div className="overflow-x-auto pb-4">
           <div className="flex flex-nowrap space-x-4">
@@ -91,7 +91,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-y-4">
+      <div className="flex flex-col gap-y-3">
         <h1 className="text-black font-semibold text-2xl">Upcoming Movies</h1>
         <div className="overflow-x-auto pb-4">
           <div className="flex flex-nowrap space-x-4">
