@@ -1,9 +1,19 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import companyLogo from "../assets/logo.svg"
 import { useEffect, useState } from "react"
 
 function Navbar() {
   const [activePage, setActivePage] = useState('home');
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (query.trim()) {
+      navigate(`search?q=${query.trim()}`);
+      // setQuery("");
+    }
+  }
 
   // useEffect(() => {
 
@@ -25,14 +35,13 @@ function Navbar() {
             }`}>Discussion</Link>
           </div>
         </div>
-        <form className="flex search-form gap-x-3 whitespace-nowrap flex-grow h-fit">
+        <form className="flex search-form gap-0 whitespace-nowrap flex-grow h-fit" onSubmit={handleSearchSubmit}>
           <input
             type="text"
             placeholder="Look up something..."
-            className="search-input w-full border-2 border-gray-200 h-10 px-5 py-2 rounded-3xl focus:outline-0 focus:border-blue-500 focus:border-3"
-          />
-          <button type="submit" className="flex items-center justify-center h-10 px-2 text-base font-semibold text-white bg-blue-500 rounded-lg w-fit whitespace-nowrap hover:bg-blue-600 transition-colors duration-300">
-            <span className="material-symbols-outlined text-white">search</span> 
+            className="search-input w-full border-1 border-gray-200 h-10 px-5 py-2 rounded-l-full rounded-r-none focus:outline-0 focus:border-blue-500 focus:border-3" onChange={(e) => setQuery(e.target.value)} />
+          <button type="submit" className="flex items-center justify-center h-10 px-4 text-base font-semibold rounded-r-full rounded-l-none w-fit whitespace-nowrap bg-gray-100 hover:bg-gray-200 transition-colors duration-300 border-1 border-gray-200">
+            <span className="material-symbols-outlined text-blue-500">search</span> 
           </button>
         </form>
         <Link to="" className="flex items-center justify-center h-10 px-5 text-base font-semibold text-white bg-blue-500 rounded-lg w-fit whitespace-nowrap hover:bg-blue-600 transition-colors duration-300">Join Us</Link>

@@ -91,3 +91,16 @@ export const getMovieCredit = async (movieId) => {
   const data = await response.json();
   return data;
 }
+
+export const searchMovies = async (query) => {
+  const url = `${API_URL}/search/movie?include_adult=true&language=en-US&page=1&query=${query}&api_key=${API_KEY}`;
+
+  const response = await fetch(url);
+  
+  if (!response.ok) {
+    throw new Error(`HTTP Error! status: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data.results;
+}
