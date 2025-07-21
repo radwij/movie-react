@@ -4,6 +4,8 @@ import MovieCard from "../components/MovieCard";
 import { Link } from "react-router-dom";
 import MovieCarousel from "../components/MovieCarousel";
 
+import HomeSkeleton from "../components/skeleton/HomeSkeleton";
+
 function Home() {
   // setting up state
   const [popularMovies, setPopularMovies] = useState([]);
@@ -51,7 +53,7 @@ function Home() {
   }, [])
 
   if (loading) {
-    return <div className="text-center mt-8">Loading Movies...</div>
+    return <HomeSkeleton />;
   }
 
   if (error) {

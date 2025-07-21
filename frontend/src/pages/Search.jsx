@@ -3,6 +3,8 @@ import { Link, useSearchParams } from "react-router-dom"
 import { searchMovies } from "../services/movieService";
 import MovieCard from "../components/MovieCard";
 
+import SearchSkeleton from "../components/skeleton/SearchSkeleton";
+
 function Search() {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q');
@@ -30,7 +32,7 @@ function Search() {
   }, [query]);
 
   if (loading) {
-    return <div className="text-center mt-8">Loading Search Result...</div>
+    return <SearchSkeleton />;
   }
 
   if (error) {

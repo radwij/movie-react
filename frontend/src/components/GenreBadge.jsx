@@ -1,7 +1,7 @@
 function GenreBadge({genre}) {
   return (
-    <div className="px-2.5 py-1 rounded-md border-1 items-center border-gray-500 hover:bg-gray-200 transition-colors duration-300 select-none">
-      <p className="text-gray-500 leading-tight">{genre.name}</p>   
+    <div className="px-3 py-1 bg-gray-50 rounded-full border border-gray-200 hover:shadow-md hover:border-gray-300 transition-all duration-300 ease-in-outitems-center select-none">
+      <p className="text-gray-700 leading-tight">{genre.name}</p>   
     </div>
   )
 }
