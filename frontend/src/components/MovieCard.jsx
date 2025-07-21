@@ -9,7 +9,7 @@ function MovieCard({movie}) {
       <div className="group relative flex-shrink-0 flex flex-col h-48 w-32 rounded-lg overflow-hidden">
         <img className="object-cover w-full h-full" src={posterImageURL}/>
         <div className="absolute inset-0 p-3 flex items-end bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <p className="text-white text-base font-bold">{movie.title}</p>
+          <p className="text-white text-base font-bold leading-tight">{movie.title}</p>
         </div>
       </div>   
     </Link>

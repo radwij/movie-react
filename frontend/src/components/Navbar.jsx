@@ -44,7 +44,7 @@ function Navbar() {
             <span className="material-symbols-outlined text-blue-500">search</span> 
           </button>
         </form>
-        <Link to="" className="flex items-center justify-center h-10 px-5 text-base font-semibold text-white bg-blue-500 rounded-lg w-fit whitespace-nowrap hover:bg-blue-600 transition-colors duration-300">Join Us</Link>
+        <Link to="/join" className="flex items-center justify-center h-10 px-5 text-base font-semibold text-white bg-blue-500 rounded-lg w-fit whitespace-nowrap hover:bg-blue-600 transition-colors duration-300">Join Us</Link>
       </div>
     </nav>
   )
