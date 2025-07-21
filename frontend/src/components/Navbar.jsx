@@ -10,7 +10,7 @@ function Navbar() {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (query.trim()) {
-      navigate(`/search?q=${query.trim()}`);
+      navigate(`search?q=${query.trim()}`);
       // setQuery("");
     }
   }

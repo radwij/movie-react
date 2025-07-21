@@ -71,9 +71,7 @@ function Home() {
           <div className="flex flex-nowrap space-x-4">
             {popularMovies.map(
               movie =>(
-              <Link to={`movie/${movie.id}`} key={movie.id}>
-                <MovieCard movie={movie}/>
-              </Link> 
+              <MovieCard movie={movie} key={movie.id} />
             ))}
           </div>
         </div>
@@ -84,9 +82,7 @@ function Home() {
           <div className="flex flex-nowrap space-x-4">
             {topRatedMovies.map(
               movie =>(
-              <Link to={`movie/${movie.id}`} key={movie.id}>
-                <MovieCard movie={movie}/>
-              </Link> 
+              <MovieCard movie={movie} key={movie.id} />
             ))}
           </div>
         </div>
@@ -97,9 +93,7 @@ function Home() {
           <div className="flex flex-nowrap space-x-4">
             {upcomingMovies.map(
               movie =>(
-              <Link to={`movie/${movie.id}`} key={movie.id}>
-                <MovieCard movie={movie}/>
-              </Link> 
+              <MovieCard movie={movie} key={movie.id} />
             ))}
           </div>
         </div>

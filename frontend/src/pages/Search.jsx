@@ -46,9 +46,7 @@ function Search() {
       <div className="flex pb-4 flex-wrap gap-4">
         {movies.map(
           movie =>(
-          <Link to={`movie/${movie.id}`} key={movie.id}>
-            <MovieCard movie={movie}/>
-          </Link> 
+          <MovieCard movie={movie} key={movie.id} />
         ))}
       </div>
     </div>
