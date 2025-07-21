@@ -5,6 +5,9 @@ import GenreBadge from "../components/GenreBadge";
 import MovieCard from "../components/MovieCard";
 import { minutesToHourAndMinutes } from "../utils/time";
 import CastCard from "../components/CastCard";
+import ProductionCard from "../components/ProductionCard";
+
+import MovieDetailSkeleton from "../components/skeleton/MovieDetailSkeleton";
 
 function MovieDetail() {
   const { movieId } = useParams();
@@ -41,7 +44,7 @@ function MovieDetail() {
   }, [])
 
   if (loading) {
-    return <div className="text-center mt-8">Loading Movie Details...</div>
+    return <MovieDetailSkeleton />;
   }
 
   if (error) {
@@ -52,11 +55,15 @@ function MovieDetail() {
 
   if (!movie) return null
   
+  const posterImageURL = movie.poster_path
+    ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+    : `https://placehold.co/500x750.png?text=image-not-found`;
+
   return (
     <div className="flex flex-col justify-between max-w-7xl px-8 py-5 mx-auto gap-6">
       <div className="flex gap-8 items-start">
         <div className="relative h-[600px] aspect-[2/3]">
-          <img className="object-cover h-full w-full rounded-t-xl" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}/>
+          <img className="object-cover h-full w-full rounded-t-xl" src={posterImageURL}/>
           <div className="absolute w-full h-[30%] inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent"></div>
         </div>
         <div className="flex flex-col w-full gap-6 flex-grow min-w-0">
@@ -67,7 +74,7 @@ function MovieDetail() {
               <p>|</p>
               <p>{minutesToHourAndMinutes(movie.runtime)}</p>
             </div>
-            <div className="flex overflow-x-auto w-full gap-2">
+            <div className="flex overflow-x-auto w-full gap-2 pb-3">
               {movie.genres.map(
                 genre => (
                   <GenreBadge genre={genre} key={genre.id} />
@@ -112,12 +119,7 @@ function MovieDetail() {
               <div className="space-y-4">
                 {movie.production_companies.map(
                   company => (
-                    <div className="flex whitespace-nowrap items-center gap-5 border-1 rounded-md px-2.5 py-1 border-gray-500 hover:bg-gray-200 transition-colors duration-300 select-none" key={company.id}>
-                      <div className="aspect-[1/1] w-12">
-                        <img className="object-cover w-full h-full" src={`https://image.tmdb.org/t/p/w500/${company.logo_path}`} alt="N/A" />
-                      </div>
-                      <p>{company.name}</p>
-                    </div>
+                    <ProductionCard production={company} key={company.id} />
                   )
                 )}
               </div>

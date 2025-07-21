@@ -40,11 +40,11 @@ function Navbar() {
             type="text"
             placeholder="Look up something..."
             className="search-input w-full border-1 border-gray-200 h-10 px-5 py-2 rounded-l-full rounded-r-none focus:outline-0 focus:border-blue-500 focus:border-3" onChange={(e) => setQuery(e.target.value)} />
-          <button type="submit" className="flex items-center justify-center h-10 px-4 text-base font-semibold rounded-r-full rounded-l-none w-fit whitespace-nowrap bg-gray-100 hover:bg-gray-200 transition-colors duration-300 border-1 border-gray-200">
+          <button type="submit" className="flex items-center justify-center h-10 px-4 text-base font-semibold bg-gray-50 border-1 border-gray-200 rounded-r-full rounded-l-none w-fit whitespace-nowrap hover:bg-gray-200 transition-colors duration-300">
             <span className="material-symbols-outlined text-blue-500">search</span> 
           </button>
         </form>
-        <Link to="" className="flex items-center justify-center h-10 px-5 text-base font-semibold text-white bg-blue-500 rounded-lg w-fit whitespace-nowrap hover:bg-blue-600 transition-colors duration-300">Join Us</Link>
+        <Link to="/join" className="flex items-center justify-center h-10 px-5 text-base font-semibold text-white bg-blue-500 rounded-lg w-fit whitespace-nowrap hover:bg-blue-600 transition-colors duration-300">Join Us</Link>
       </div>
     </nav>
   )
